@@ -1,0 +1,25 @@
+Con una velocidad de transferencias de 100 GigaBits/seg cuanto tiempo se tardaría en
+llenar un disco de 1 TiB? (asumiendo que es la tasa efectiva de una transmisión constante
+y sin interrupciones utilizando las unidades en decimal del sistema internacional)
+a. ¿Y si el disco fuese de 100GiB?
+
+
+1 Tib ? 
+
+1Gib = 1073741824 bytes 
+
+1 Tib = 1073741824 x 1024 = 1099511627776 bytes
+
+cuantos bits hay en un Tib ? -> (1099511627776 x 8) bits
+
+
+100 GigaBits = 100 x 10**9 = 100000000000 bits
+
+100000000000 bits -> 1 segundo
+(1099511627776 x 8) bits -> 87.9 segundos
+
+
+100 GiB = 100 x 1073741824 x 8 bits 
+
+100000000000 bits -> 1 segundo
+858993459200 bits -> 8.58 segundos

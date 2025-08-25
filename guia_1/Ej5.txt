@@ -1,0 +1,12 @@
+a) AAAA
+b) 0025
+c) 2580
+d) 2FE4
+e) FFFF
+f) 25FF
+g) FFA5
+h) 87AC
+i) 5555
+j) 25DA
+k) DA25
+l) 0000

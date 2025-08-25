@@ -1,0 +1,14 @@
+
+kib = 1024 bytes 
+mib = 1024 kib
+gib = 1024 mib  
+
+1 gib ->  1048576 kib
+
+
+4 gib -> 4194304 kib 
+
+
+cuantos bloques de 4kib ? 
+
+4194304 kib  / 4 = 1048576 bloques de 4 kib

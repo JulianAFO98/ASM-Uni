@@ -1,0 +1,6 @@
+a) >> 8 ->  And 00FF
+b)  And 00FF
+c) and 0001
+d) >>  15 (usando SAR)
+e) >> 4 And 0FFF
+f) And 000F

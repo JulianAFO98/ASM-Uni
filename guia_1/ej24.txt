@@ -1,0 +1,18 @@
+Para hacer el streaming de una película de alta resolución que dura 2 horas y ocupa 4 GiB,
+¿cuál es, en teoría, la tasa mínima de transferencia efectiva que debo tener de ancho de
+banda para reproducirla por completo sin ningún corte?
+
+1Gib = 1073741824 bytes
+4Gib = 4 x 1073741824 bytes
+4 Gib = 4 x 1073741824 x 8 bits
+4Gib = 34359738368 bits
+
+2 horas = 120 min 
+2 horas = 120 x 60 segundos 
+2 horas =  7200 segundos 
+
+1 Mb = 1000000 bits 
+
+4772186  /  1000000 = 4,77 Mb
+
+Velocidad minima teorica = 4772186 bits/s o 4,77 Mb/s

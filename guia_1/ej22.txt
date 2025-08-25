@@ -1,0 +1,13 @@
+Una variable de 4 bytes que representa un puntero a memoria:
+a. ¿Cuántas celdas de memoria puede direccionar?
+b. Si cada celda es de 2 bytes, ¿cuál es el tamaño de la memoria direccionable por
+esa variable?
+
+a)
+4 bytes -> 0000 0000 0000 0000 0000 0000 0000 0000 (2) = 00000000(16)
+
+entonces esto quiere decir que tiene 2**32 posibilidades de celdas
+
+
+b)
+2 **33 bytes / 2**30 bytes = 2*3 Gib = 8Gib 
