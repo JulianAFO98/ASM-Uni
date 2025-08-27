@@ -1,5 +1,5 @@
 a)
-otro:	MOV [AC],0
+otro:	MOV AC,0
 	MOV [4],0
 	MOV EDX,DS
 	LDL ECX,1
@@ -11,10 +11,10 @@ otro:	MOV [AC],0
 	CMP [0],1
 	JNZ fin
 sigue:	
-	SHL [0],[AC]
+	SHL [0],AC
 	OR [4],[0]
 	MOV [0],0
-	ADD [AC],1
+	ADD AC,1
 	JMP otro
 fin:	
 	MOV EDX,DS

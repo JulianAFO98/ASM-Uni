@@ -1,0 +1,47 @@
+/*
+Modificar el ejercicio anterior de modo que antes de ingresar la lista se lea un valor que
+represente una máscara con la cual se debe realizar un AND a cada número de la lista antes
+de calcular la cantidad de bits en 1.
+
+*/
+
+	MOV EDX,DS
+	MOV EAX,0x1
+	LDL ECX,1
+	LDH ECX,4
+	SYS 1
+	MOV EFX,[EDX]
+
+
+inicio:
+	MOV EDX,DS
+	MOV EAX,0x1
+	LDL ECX,1
+	LDH ECX,4
+	SYS 1
+	
+	MOV EAX,[EDX]
+	CMP EAX,0
+	JN fin
+	XOR AC,AC
+	AND EAX,EFX
+
+bucle:
+	CMP EAX,0
+	JZ mostrar
+	MOV EBX,EAX		
+	AND EBX,0x1
+	ADD AC,EBX
+	SHR EAX,1
+	JMP bucle
+
+mostrar:
+	MOV EDX,AC 
+	MOV EAX,0x1
+	LDL ECX,1
+	LDH ECX,4
+	SYS 2
+	JMP inicio
+
+fin:
+	stop
