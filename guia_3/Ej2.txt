@@ -1,0 +1,50 @@
+a)
+otro:	MOV [AC],0
+	MOV [4],0
+	MOV EDX,DS
+	LDL ECX,1
+	LDH ECX,4
+	MOV EAX,0x01
+	SYS 1
+	CMP [0],0
+	JZ sigue
+	CMP [0],1
+	JNZ fin
+sigue:	
+	SHL [0],[AC]
+	OR [4],[0]
+	MOV [0],0
+	ADD [AC],1
+	JMP otro
+fin:	
+	MOV EDX,DS
+	ADD EDX,4
+	LDL ECX,1
+	LDH ECX,4
+	MOV EAX, 0x1F
+	SYS 2	
+	stop
+
+b)
+otro:	MOV [4],0
+	MOV EDX,DS
+	LDL ECX,1
+	LDH ECX,4
+	MOV EAX,0x01
+	SYS 1
+	CMP [0],0
+	JZ sigue
+	CMP [0],1
+	JNZ fin
+sigue:	
+	SHL [4],1
+	OR [4],[0]
+	JMP otro
+fin:	
+	MOV EDX,DS
+	ADD EDX,4
+	LDL ECX,1
+	LDH ECX,4
+	MOV EAX, 0x1F
+	SYS 2	
+	stop

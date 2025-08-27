@@ -1,0 +1,29 @@
+        MOV [AC],0 // inicializo AC
+        MOV [4],0 //inicializo DS+4
+
+inicio: MOV EAX,0x01
+        MOV EDX,DS
+        LDH ECX,4
+        LDL ECX,1
+        SYS 0x1
+        CMP [EDX],0
+        JN fin
+sigue:
+        ADD [4],[EDX]
+        ADD [AC],1
+        JMP inicio
+fin:
+        CMP [AC],0 // valido division por 0
+        JZ stop
+
+        DIV [4],[AC]
+
+        MOV EAX,0x01
+        MOV EDX,[4]
+        LDH ECX,4
+        LDL ECX,1
+        SYS 2
+stop:
+        stop
+
+
