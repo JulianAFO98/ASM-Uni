@@ -28,7 +28,7 @@ bucle:
 	JMP otro
 
 fin:
-	MOV EDX,EAX
+	MOV [EDX],EAX
 	MOV EAX,0x01
 	LDL ECX,1
 	LDH ECX,4
