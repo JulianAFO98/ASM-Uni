@@ -1,0 +1,49 @@
+MOV [100],3 // n = 3
+MOV [104],3 // m = 3
+MOV [108],1
+MOV [112],5
+MOV [116],7
+MOV [120],2
+MOV [124],-5
+MOV [128],-3
+MOV [132],2
+MOV [136],-2
+MOV [140],1
+
+MOV EBX,0 //  i = 0
+fori: 	CMP EBX,[100]
+	JNN fin
+	MOV EDX,0 //j = 0
+forj:
+	CMP EDX,[104]
+	JNN sigfila
+	MOV ECX,EBX
+	MUL ECX,[104]
+	ADD ECX,EDX
+	MUL ECX,4
+	ADD ECX,DS
+	ADD ECX,8 // mat[i,j]
+	MOV EEX,EDX
+	MUL EEX,[104]
+	ADD EEX,EBX
+	MUL EEX,4
+	ADD EEX,DS
+	ADD EEX,8 // mat[j,i]
+	CMP [ECX],[EFX]
+	JNZ fallo
+	ADD EDX,1
+	JMP forj
+fallo:
+	MOV EFX,0
+	JUMP mostrar
+sigfila:
+	ADD EBX,1
+	JUMP fori
+fin:
+	MOV EFX,1	
+
+mostrar:
+	mostrar aqui
+	
+
+	
