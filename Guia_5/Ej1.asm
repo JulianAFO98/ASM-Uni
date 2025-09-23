@@ -1,0 +1,74 @@
+PUSH 5
+PUSH 3
+CALL POTENCIA
+ADD SP,4
+ADD SP,4
+;potencia devuelve en EAX
+
+
+POTENCIA: 
+PUSH BP
+MOV BP,SP
+PUSH EDX
+SUB SP,4
+;declaraciones
+;;se podria verificar negativo
+MOV EDX,0;i=0
+MOV [BP-8],1; res = 1
+BUCLE:
+CMP EDX,[BP+8]
+JNN FINBUCLE
+MUL [BP-8],[BP+12];preguntar
+ADD EDX,1
+JMP bucle
+FINBUCLE:
+MOV EAX,[BP-8]
+ADD SP,4
+POP EDX
+MOV SP,BP
+POP BP
+RET
+
+
+;recursivo
+
+PUSH 5
+PUSH 3
+CALL POTENCIA
+ADD SP,4
+ADD SP,4
+;potencia devuelve en EAX
+
+
+POTENCIA: 
+PUSH BP
+MOV BP,SP
+PUSH EDX
+PUSH ECX
+SUB SP,4
+;declaraciones
+;;se podria verificar negativo
+MOV EDX,[BP+8]; EDX = 3
+MOV [BP-8],1
+CMP EDX,0
+JNP FINRECURSIVIDAD
+SUB EDX,1
+PUSH 5
+PUSH EDX
+CALL POTENCIA
+ADD SP,4
+ADD SP,4
+MOV ECX,[BP+12]
+MUL ECX,EAX
+MOV [BP-8],ECX
+FINRECURSIVIDAD:
+MOV EAX,[BP-8]
+;;limpiar pila
+ADD SP,4
+POP ECX
+POP EDX
+MOV SP,BP
+POP BP
+RET
+
+
