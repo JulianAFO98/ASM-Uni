@@ -1,0 +1,66 @@
+Dados los siguientes algoritmos. Transcribirlos en ASM de la MV e indicar cómo quedaría la pila al
+final de su ejecución
+
+b)
+
+int vec[9]
+void main(){
+  int i=2;
+  vec[i] = 501;
+  vec[0] = 0xF0F0 & vec[i];
+  proce( i, vec );
+}
+
+void proce( int x, int w[]){
+  w[x-1] = w[x] | w[0];
+}
+
+
+;desde DS[0] hasta DS[32] es nuestro vector global
+call main
+
+
+
+main:
+PUSH BP
+MOV BP,SP
+PUSH EDX
+SUB SP,4
+MOV [BP-8],2
+MOV EDX,[BP-8]
+MUL EDX,4
+ADD EDX,DS
+MOV [EDX],501
+MOV [0],[EDX]
+AND [0],0xF0F0
+PUSH DS
+PUSH [BP-8]
+CALL proce
+ADD SP,4
+ADD SP,4
+POP EDX
+MOV SP,BP
+POP BP
+
+proce:
+PUSH BP
+MOV BP,SP
+PUSH EDX
+PUSH EBX
+PUSH ECX
+MOV EDX,[BP+8];EDX = 2
+MOV EBX,[BP+12];EBX = v[0] o puntero al principio del vector
+MOV ECX,EDX; ECX = 2
+SUB ECX,4; x-1,en la pila para bajar el indica hay que sumar 
+MUL ECX,4; ECX* tamañoCelda = 1*4
+ADD ECX,EBX; ECX + EBX que tiene el puntero a ds
+MOV [ECX],[EBX]; W[x-1] = w[0]
+MUL EDX,4; 2*4
+ADD EDX,EBX;le sumo el puntero al vector
+OR [ECX],[EDX];w[x-1] = w[x] | w[0]
+POP ECX
+POP EBX
+POP EDX
+MOV SP,BP
+POP BP
+

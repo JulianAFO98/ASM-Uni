@@ -1,0 +1,60 @@
+ Dados los siguientes algoritmos. Transcribirlos en ASM de la MV e indicar cómo quedaría la pila al
+final de su ejecución.
+
+a)
+int j=3;
+void main(){
+ int arreglo[5];
+ arreglo[0] = 1020;
+ arreglo[1] = arreglo[0] | 0x3FF;
+ calculo( j, arreglo);
+ }
+void calculo( int x, int vec[]){
+ vec[x] = vec[x-1] & vec[0];
+}
+
+
+MOV [0],3
+CALL main
+
+
+
+main:
+PUSH BP
+MOV BP,SP
+PUSH EDX
+SUB SP,4; o SUB SP,20
+SUB SP,4
+SUB SP,4
+SUB SP,4
+SUB SP,4
+MOV [BP-8],1020
+MOV [BP-12],[BP-8]
+OR [BP-12],0x3FF
+MOV EDX,BP
+SUB EDX,8
+PUSH EDX
+PUSH [0]
+CALL calculo
+ADD SP,4
+ADD SP,4
+ADD SP,20
+MOV SP,BP
+POP BP
+
+calculo:
+PUSH BP
+MOV BP,SP
+PUSH EAX
+PUSH EBX
+MOV EAX,[BP+8]
+MUL EAX,4
+ADD EAX,[BP+12]
+MOV [EAX],[BP+12]
+MOV EBX,EAX
+ADD EBX,4
+AND [EAX],[EBX]
+POP EBX
+POP EAX
+MOV SP,BP
+POP BP

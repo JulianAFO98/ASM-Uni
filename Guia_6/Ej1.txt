@@ -1,0 +1,56 @@
+Indicar en los siguientes casos de invocación a funciones, como sería la invocación a la subrutina
+en ASM de la MV. Considerar que las variables a, b y c se encuentran en las posiciones de
+memoria BP-4, BP-8 y BP-12, respectivamente, y corresponden a variables locales de la función
+que invoca.
+a. proce(a, b, c);
+b. c = func(*a, b);
+c. proce (&a, *b, *c);
+
+a)
+...
+PUSH [BP-12]
+PUSH [BP-8]
+PUSH [BP-4]
+call proce 
+ADD SP,4
+ADD SP,4
+ADD SP,4
+...
+b)
+...
+PUSH EDX
+MOV EDX,[BP-4]
+PUSH [EDX]
+PUSH [BP-8]
+CALL func;en EAX devuelve mi valor
+ADD SP,4
+ADD SP,4
+MOV [BP-12],EAX
+POP EDX
+...
+
+c)
+...
+MOV BP,SP
+SUB SP,4
+PUSH EDX
+PUSH EBX
+PUSH ECX
+MOV EDX,[BP-12]
+MOV EBX,[BP-8]
+MOV ECX,BP
+SUB ECX,4
+PUSH [EDX]
+PUSH [EBX]
+PUSH ECX
+CALL proce 
+ADD SP,4
+ADD SP,4
+ADD SP,4
+POP ECX
+POP EBX
+POP EDX
+ADD SP,4
+MOV SP,BP
+...
+
